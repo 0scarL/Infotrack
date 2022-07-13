@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface UsuariosEndPoint {
 
-    @GET("user")
-    suspend fun getAllUsuarios() : Usuarios
+    @GET("users")
+    suspend fun getAllUsuarios() : List<Usuarios>
 
 }

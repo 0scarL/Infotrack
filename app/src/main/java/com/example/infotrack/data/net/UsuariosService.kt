@@ -7,10 +7,10 @@ import kotlinx.coroutines.withContext
 
 class UsuariosService {
 
-    suspend fun getUsuarios() {
-        withContext(Dispatchers.IO){
+    suspend fun getUsuarios(): List<Usuarios> {
+        return withContext(Dispatchers.IO){
             val response = RetrofitCaller.service.getAllUsuarios()
-            return@withContext response
+            response?: emptyList()
         }
 
     }
