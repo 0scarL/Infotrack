@@ -2,9 +2,9 @@ package com.example.infotrack.data.utils
 
 import com.example.infotrack.data.model.Usuarios
 
-object Variables {
+object UsuarioCarrier {
 
-    var users = listOf<Usuarios>()
+    lateinit var unUsuario : Usuarios
 
 
 }

@@ -9,10 +9,10 @@ class UsuariosVH(private val binding: UsuarioPortadaBinding): RecyclerView.ViewH
 
     //private val binding: UsuarioItemLayoutBinding
 
-    fun bind(usuarios: Usuarios) {
-        binding.tvName.text = usuarios.name
-        binding.tvEmail.text = usuarios.email
-        Log.d("adapter", usuarios.email)
+    fun bind(usuario: Usuarios) {
+        binding.tvName.text = usuario.name
+        binding.tvEmail.text = usuario.email
+        Log.d("adapter", usuario.email)
 
     }
 }

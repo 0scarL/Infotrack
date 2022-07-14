@@ -8,7 +8,9 @@ import com.example.infotrack.data.model.Usuarios
 import com.example.infotrack.databinding.UsuarioPortadaBinding
 import kotlin.properties.Delegates
 
-class UsuariosAdapter(): RecyclerView.Adapter<UsuariosVH>() {
+class UsuariosAdapter(
+    private var usuariosClickedListener: (Usuarios) -> Unit
+): RecyclerView.Adapter<UsuariosVH>() {
 
     var usuarios: List<Usuarios> by Delegates.observable(emptyList()) { _, old, new ->
         DiffUtil.calculateDiff(object : DiffUtil.Callback() {
@@ -37,9 +39,9 @@ class UsuariosAdapter(): RecyclerView.Adapter<UsuariosVH>() {
     }
 
     override fun onBindViewHolder(holder: UsuariosVH, position: Int) {
-        val usuarios = usuarios[position]
-        holder.bind(usuarios)
-        holder.itemView.setOnClickListener { TODO("cargar el listener para instrucciones luego") }
+        val usuario = usuarios[position]
+        holder.bind(usuario)
+        holder.itemView.setOnClickListener { usuariosClickedListener(usuario) }
 
     }
 
