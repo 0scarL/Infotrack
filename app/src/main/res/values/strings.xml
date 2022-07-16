@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Infotrack</string>
+    <string name="image_saved">\"Imagen guardada en Galeria\"</string>
 </resources>

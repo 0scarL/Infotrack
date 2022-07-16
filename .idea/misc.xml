@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/Infotrack/app/src/main/res/drawable/sombra_buscador.xml" value="0.1255" />
-        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/Infotrack/app/src/main/res/layout/activity_detail.xml" value="0.22" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/Infotrack/app/src/main/res/drawable/sombra_imagen.xml" value="0.1465" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/Infotrack/app/src/main/res/layout/activity_detail.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/Infotrack/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/Infotrack/app/src/main/res/layout/usuario_portada.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/OSCAR A/AndroidStudioProjects/Infotrack/app/src/main/res/xml/file_paths.xml" value="0.17552083333333332" />
       </map>
     </option>
   </component>
