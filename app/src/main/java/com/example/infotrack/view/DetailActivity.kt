@@ -18,12 +18,10 @@ import com.example.infotrack.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetailBinding
-    private  var fotoReady = false
+    lateinit var binding: ActivityDetailBinding
+    private var fotoReady = false
 
-    private val camara by lazy {
-        Camara(this, ActivityDetailBinding.inflate(layoutInflater))
-    }
+    private val camara by lazy { Camara(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -34,14 +32,13 @@ class DetailActivity : AppCompatActivity() {
         postearOnScreen()
 
         binding.openCamera.setOnClickListener {
-           camara.lanzarCamara()
+            camara.lanzarCamara()
         }
 
-        if (fotoReady){
-            binding.photoTaken.setOnClickListener{
-
-            }
+        binding.photoTaken.setOnClickListener {
+            if (fotoReady) navegateTo(UsuarioCarrier.unUsuario)
         }
+        Log.d("Detail Activity", fotoReady.toString())
 
     }
 
@@ -53,7 +50,7 @@ class DetailActivity : AppCompatActivity() {
             val imgBitmap: Bitmap? = BitmapFactory.decodeFile(rutaImagen)
             binding.photoTaken.setImageBitmap(imgBitmap)
             binding.photoTaken.setRotation(90F)
-            Toast.makeText(this, "Foto almacenada en la APP", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Foto almacenada en la APP", Toast.LENGTH_SHORT).show()
             fotoReady = true
 
         }
@@ -61,41 +58,44 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun navegateTo(usuarios: Usuarios) {
-        val intent = Intent(this, DetailActivity::class.java)
+        val intent = Intent(this, ApruebaInfo::class.java)
         UsuarioCarrier.unUsuario = usuarios
         startActivity(intent)
+        finish()
 
     }
-        private fun postearOnScreen() {
-            UsuarioCarrier.unUsuario.let { usuario ->
 
-                binding.tvDetailInfo.text = buildSpannedString {
+    private fun postearOnScreen() {
+        UsuarioCarrier.unUsuario.let { usuario ->
 
-                    bold { append("Nombre de Usuario: ") }
-                    if (usuario.name != null) appendLine(usuario.name)
+            binding.tvDetailInfo.text = buildSpannedString {
 
-                    bold { append("User Name: ") }
-                    if (usuario.username != null)
-                        appendLine(usuario.username)
+                bold { append("Nombre de Usuario: ") }
+                if (usuario.name != null) appendLine(usuario.name)
 
-                    bold { append("Ciudad : ") }
-                    if (usuario.address.city != null) appendLine(usuario.address.city)
-                }
+                bold { append("User Name: ") }
+                if (usuario.username != null)
+                    appendLine(usuario.username)
 
-                binding.tvDetailCompany.text = buildSpannedString {
-
-                    bold { append("Nombre de Compañía: ") }
-                    if (usuario.company.name != null) appendLine(usuario.company.name)
-
-                    bold { append("BS: ") }
-                    if (usuario.company.bs != null)
-                        appendLine(usuario.company.bs)
-
-                    bold { append("Eslogan o Catchphrase: ") }
-                    if (usuario.company.catchPhrase != null) appendLine(usuario.company.catchPhrase)
-                }
+                bold { append("Ciudad : ") }
+                if (usuario.address.city != null) appendLine(usuario.address.city)
             }
 
+            binding.tvDetailCompany.text = buildSpannedString {
+
+                bold { append("Nombre de Compañía: ") }
+                if (usuario.company.name != null) appendLine(usuario.company.name)
+
+                bold { append("BS: ") }
+                if (usuario.company.bs != null)
+                    appendLine(usuario.company.bs)
+
+                bold { append("Eslogan o Catchphrase: ") }
+                if (usuario.company.catchPhrase != null) appendLine(usuario.company.catchPhrase)
+            }
         }
 
     }
+
+
+}

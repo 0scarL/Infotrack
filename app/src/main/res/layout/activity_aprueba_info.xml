@@ -4,6 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
     tools:context=".view.ApruebaInfo">
+
+    <TextView
+        android:id="@+id/tv_aprobacion"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/sombra_buscador"
+        android:padding="10dp"
+        android:text="@string/tratmiento_datos"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="@drawable/sombra_buscador"
+        android:text="Acepta tratamiento  de datos"
+        android:layout_marginTop="2dp"
+        android:clickable="true"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/open_camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_aprobacion" />
+
+    <Button
+        android:id="@+id/open_camera"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#518BBA"
+        android:text="Foto Docum."
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/checkbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/checkbox"/>
+
+    <ImageView
+        android:id="@+id/photo_taken"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/foto_documento"
+        app:layout_constraintBottom_toTopOf="@id/tv_aviso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkbox" />
+
+    <TextView
+        android:id="@+id/tv_aviso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aviso_eviar"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@id/progres_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photo_taken" />
+
+
+    <ProgressBar
+        android:id="@+id/progres_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:max="100"
+        android:progressDrawable="@drawable/selector"
+        app:layout_constraintTop_toBottomOf="@id/tv_aviso"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

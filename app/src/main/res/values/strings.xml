@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Infotrack</string>
     <string name="image_saved">\"Imagen guardada en Galeria\"</string>
+    <string name="tratmiento_datos">Los datos personales aquí recolectados serán,almacenados,
+        procesados, usados, compilados, transmitidos, transferidos, actualizados y
+        dispuestos conforme lo establece el capítulo 25 del Decreto 1074 de 2015  y
+        la Política de Tratamiento y Protección de Datos Personales.
+       </string>
+    <string name="aviso_avanzar">Tome su foto de perfil y toque la imagen para continuar.</string>
+    <string name="aviso_eviar">Acepte terminos y toque la foto para enviar Información.</string>
+
 </resources>

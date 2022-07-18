@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aviso_avanzar">Tome su foto de perfil y toque la imagen para continuar.</string>
+    <string name="aviso_eviar">Acepte terminos y toque la foto para enviar Información.</string>
+</resources>
