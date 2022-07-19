@@ -1,18 +1,23 @@
 package com.example.infotrack.view
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import com.example.infotrack.data.Camara
 import com.example.infotrack.data.Camara.Companion.REQUEST_CODE
 import com.example.infotrack.data.Camara.Companion.rutaImagen
 import com.example.infotrack.data.model.Usuarios
+import com.example.infotrack.data.utils.Constantes
 import com.example.infotrack.data.utils.UsuarioCarrier
 import com.example.infotrack.databinding.ActivityDetailBinding
 
@@ -20,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityDetailBinding
     private var fotoReady = false
+    private var permision = Permision(this)
 
     private val camara by lazy { Camara(this) }
 
@@ -31,9 +37,14 @@ class DetailActivity : AppCompatActivity() {
         Log.d("Detail Activity", "llega dato" + UsuarioCarrier.unUsuario)
         postearOnScreen()
 
+        Constantes.PERMISO_CAMARA = permision.getPermision()
+
+        if (Constantes.PERMISO_CAMARA)
         binding.openCamera.setOnClickListener {
+            if(Constantes.PERMISO_CAMARA)
             camara.lanzarCamara()
         }
+
 
         binding.photoTaken.setOnClickListener {
             if (fotoReady) navegateTo(UsuarioCarrier.unUsuario)
@@ -96,6 +107,5 @@ class DetailActivity : AppCompatActivity() {
         }
 
     }
-
 
 }

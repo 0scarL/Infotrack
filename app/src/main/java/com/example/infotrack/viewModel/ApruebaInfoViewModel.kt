@@ -42,6 +42,7 @@ class ApruebaInfoViewModel() : ViewModel() {
             insertUsuarioDBCase(UsuarioCarrier.user)
             Log.d("insertando usuario id", UsuarioCarrier.user.Id.toString())
 
+
         }
     }
 

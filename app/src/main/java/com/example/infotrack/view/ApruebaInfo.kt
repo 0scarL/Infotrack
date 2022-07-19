@@ -59,6 +59,7 @@ class ApruebaInfo : AppCompatActivity() {
 
         binding.photoTaken.setOnClickListener {
             if (fotoReady && (Sumas.getTermino() == 100)) {
+                apruebaInfoViewModel.insertUsuario()
                 Toast.makeText(this, "Informacion Guardada", Toast.LENGTH_SHORT).show()
                 apruebaInfoViewModel.finaliza()
                 apruebaInfoViewModel.currentProgress.observe(this,
@@ -67,25 +68,22 @@ class ApruebaInfo : AppCompatActivity() {
 
                     })
                 Log.d("obtener foto base 64", UsuarioCarrier.foto64)
-                //finish()
+                finish()
 
             }
         }
 
         binding.tvAprobacion.setOnClickListener {
-            // apruebaInfoViewModel.insertUsuario()
+           // apruebaInfoViewModel.insertUsuario()
             apruebaInfoViewModel.getUsuariosDB()
-            Log.d("Aprueba Activity", "ehhhhh")
             apruebaInfoViewModel.userFromDB.observe(this, Observer { userFromdb ->
                 if (!userFromdb.isNullOrEmpty()) {
                     Log.d("Aprueba Activity", "datos from db: " + userFromdb.size)
+                    Toast.makeText(this, "Usuarios En DB: "+userFromdb.size, Toast.LENGTH_SHORT).show()
                 }
             })
         }
-
-
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -99,7 +97,7 @@ class ApruebaInfo : AppCompatActivity() {
             UsuarioCarrier.foto64 = get64base()
             createUser()
             apruebaInfoViewModel.checked()
-            apruebaInfoViewModel.insertUsuario()
+            //apruebaInfoViewModel.insertUsuario()
 
 
         }
@@ -111,10 +109,6 @@ class ApruebaInfo : AppCompatActivity() {
             fotoReady)
         Log.d("create user", UsuarioCarrier.user.toString())
     }
-
-
-
-
 
 private fun get64base(): String {
     val drawable: Drawable = binding.photoTaken.drawable
