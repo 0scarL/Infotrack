@@ -68,6 +68,7 @@ class ApruebaInfo : AppCompatActivity() {
 
                     })
                 Log.d("obtener foto base 64", UsuarioCarrier.foto64)
+
                 finish()
 
             }
