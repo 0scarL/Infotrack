@@ -6,12 +6,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.infotrack.data.model.Usuarios
 import com.example.infotrack.data.utils.UsuarioCarrier
 import com.example.infotrack.domain.GetUsuariosUseCase
+import com.example.infotrack.domain.InsertUsuarioDBCase
 import kotlinx.coroutines.launch
+
 
 class UsuariosViewModel : ViewModel() {
 
     private var getUsuariosUseCase = GetUsuariosUseCase()
-    val usuarios =MutableLiveData<List<Usuarios>>()
+    private var insertUsuariosCase = InsertUsuarioDBCase()
+    val usuarios = MutableLiveData<List<Usuarios>>()
     val searchResult = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
@@ -25,13 +28,14 @@ class UsuariosViewModel : ViewModel() {
                 usuarios.postValue(result)
                 UsuarioCarrier.usuarios = result
                 searchResult.postValue(true)
-            }else {
+            } else {
                 searchResult.postValue(false)
             }
             offProgresBar()
         }
 
     }
+
 
     private fun onProgressBar() = loading.postValue(true)
 
